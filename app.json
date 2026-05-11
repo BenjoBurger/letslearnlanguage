@@ -7,7 +7,6 @@
     "icon": "./assets/images/icon.png",
     "scheme": "letslearnlanguage",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
@@ -18,8 +17,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.benjoburger.letslearnlanguage"
     },
     "web": {
       "output": "static",
@@ -38,11 +37,21 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "expo-font",
+      "expo-web-browser",
+      "expo-image"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "30bc91da-5743-49bc-adc5-c31b5c1c5371"
+      }
+    },
+    "owner": "benjoburger"
   }
 }
