@@ -1,8 +1,8 @@
-import ThemedView from '@/components/ThemedView';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import AppButton from '../../components/NWButton';
+import ThemedView from '../../components/ThemedView';
 import { useAuth } from '../../hooks/useAuth';
 import { supabase } from '../../lib/supabase';
 

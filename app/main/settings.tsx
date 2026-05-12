@@ -11,9 +11,7 @@ export default function SettingsScreen() {
   const { user, updateEmail, updatePassword, signOut } = useAuth();
   const router = useRouter();
   const mounted = useRef(true);
-  const [username, setUsername] = useState(user?.displayName || '');
   const [email, setEmail] = useState(user?.email || '');
-  const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [saving, setSaving] = useState(false);
@@ -61,7 +59,6 @@ export default function SettingsScreen() {
       Alert.alert('Error', error);
     } else {
       Alert.alert('Success', 'Password updated successfully');
-      setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
     }
@@ -85,7 +82,7 @@ export default function SettingsScreen() {
         <ThemedView style={{ flex: 0, marginBottom: 20, backgroundColor: '#fff', borderRadius: 8, padding: 12 }}>
           <TextInput
             placeholder="Display name"
-            value={username}
+            value={user?.displayName || ''}
             editable={false}
             style={{
               borderWidth: 1,

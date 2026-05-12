@@ -99,7 +99,7 @@ export default function LoginScreen() {
       />
 
       <ThemedText style={{ marginTop: 16, textAlign: 'center', color: theme.colors.ink }}>
-        Don't have an account?{' '}
+        Don&apos;t have an account?{' '}
         <ThemedText style={{ color: theme.colors.secondary, fontWeight: '600' }} onPress={onSignUp}>
           Sign up
         </ThemedText>
