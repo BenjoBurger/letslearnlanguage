@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Button, Text, TextInput, View } from 'react-native';
 import AppButton from '../../components/NWButton';
 import ThemedView from '../../components/ThemedView';
@@ -12,6 +12,13 @@ export default function AddLesson() {
   const [saving, setSaving] = useState(false);
   const router = useRouter();
   const { user } = useAuth();
+  const mounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
 
   const save = async () => {
     if (!question.trim()) return Alert.alert('Error', 'Please enter a question');
@@ -32,11 +39,11 @@ export default function AddLesson() {
       }
 
       Alert.alert('Success', 'Lesson saved successfully');
-      router.back();
+      if (mounted.current) router.back();
     } catch (err) {
       Alert.alert('Error', `Could not save lesson: ${(err as Error).message}`);
     } finally {
-      setSaving(false);
+      if (mounted.current) setSaving(false);
     }
   };
 
@@ -49,12 +56,14 @@ export default function AddLesson() {
       <Text style={{ marginBottom: 8 }}>Author: {user?.displayName ?? 'Unknown'}</Text>
       <TextInput
         placeholder="Question"
+        placeholderTextColor={'#999'}
         value={question}
         onChangeText={setQuestion}
         style={{ borderWidth: 1, borderColor: '#ccc', padding: 8, marginBottom: 12 }}
       />
       <TextInput
         placeholder="Answer"
+        placeholderTextColor={'#999'}
         value={answer}
         onChangeText={setAnswer}
         multiline

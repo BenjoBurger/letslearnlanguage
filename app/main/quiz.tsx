@@ -252,6 +252,7 @@ export default function Quiz() {
         value={answerText}
         onChangeText={setAnswerText}
         placeholder="Your answer"
+        placeholderTextColor={'#999'}
         editable={!showReveal}
         style={{
           borderWidth: 1,

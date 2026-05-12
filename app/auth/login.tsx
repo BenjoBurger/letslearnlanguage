@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Alert, TextInput } from 'react-native';
 import AppButton from '../../components/NWButton';
 import ThemedText from '../../components/ThemedText';
@@ -13,6 +13,13 @@ export default function LoginScreen() {
   const [loading, setLoading] = useState(false);
   const { signIn, user, loading: authLoading } = useAuth();
   const router = useRouter();
+  const mounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     if (user && !authLoading) {
@@ -39,6 +46,7 @@ export default function LoginScreen() {
     }
     setLoading(true);
     const { error } = await signIn(email, password);
+    if (!mounted.current) return;
     setLoading(false);
 
     if (error) {
@@ -60,6 +68,7 @@ export default function LoginScreen() {
 
       <TextInput
         placeholder="Email"
+        placeholderTextColor={'#999'}
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"

@@ -13,20 +13,6 @@ export default function ThemedView({ children, style, ...rest }: ViewProps) {
     >
       <View
         pointerEvents="none"
-        // style={{
-        //   position: 'absolute',
-        //   width: 180,
-        //   height: 180,
-        //   borderRadius: 90,
-        //   backgroundColor: theme.colors.soft,
-        //   left: -40,
-        //   top: -40,
-        //   transform: [{ rotate: '15deg' }],
-        //   opacity: 0.9,
-        // }}
-      />
-      <View
-        pointerEvents="none"
         style={{
           position: 'absolute',
           width: 140,
