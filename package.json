@@ -8,11 +8,14 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "check:prebuild": "npx expo-doctor",
+    "build:android": "npm run check:prebuild && eas build --platform android --profile development --non-interactive",
+    "build:ios": "npm run check:prebuild && eas build --platform ios --profile development --non-interactive"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
-    "@react-native-async-storage/async-storage": "^3.0.2",
+    "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/elements": "^2.9.15",
     "@react-navigation/native": "^7.1.8",
@@ -46,8 +49,9 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.10",
-    "eslint": "^10.3.0",
+    "eslint": "^9.7.0",
     "eslint-config-expo": "~55.0.0",
+    "eslint-plugin-react": "^7.34.1",
     "tailwindcss": "^3.4.19",
     "typescript": "~5.9.2"
   },
